@@ -1,7 +1,7 @@
 # JSkeylogger-Flying-book-robot-push
 JS键盘记录配合飞书机器人消息推送
 
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=AQF0R&layout=compact&theme=tokyonight)
+   ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=AQF0R&layout=compact&theme=tokyonight)
 
 `原理: 使用JS获取前端用户输入值，后端PHP实时写入username.txt/passwd.txt文件中，实时读取txt文本每行内容来向飞书机器人唯一tokenAPI发送POST请求.`
 
